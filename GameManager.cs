@@ -7,7 +7,7 @@ public class GameManager{
     public void Run() {
         while (true) 
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(700);
             Console.Clear();
             ui.ShowMainMenu();
             
@@ -23,6 +23,7 @@ public class GameManager{
                 switch (selectedMenuNumber)
                 {
                     case 1:
+
                         break;
                     case 2:
                         break;
