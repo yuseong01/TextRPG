@@ -1,4 +1,7 @@
-public class GameManager{
+using Microsoft.VisualBasic.FileIO;
+
+public class GameManager
+{
     UIManager ui = new UIManager();  //입출력 담당
     Shop shop = new Shop();
     InventoryManager inventory = new InventoryManager();
@@ -6,32 +9,33 @@ public class GameManager{
 
     public GameManager()
     {
-        player = new Player("마법사", inventory); //1. 위에서 player객체 생성하면 오류남 
+        player = new Player(inventory); //1. 위에서 player객체 생성하면 오류남 
     }
-    public void Run() {
+    public void Run()
+    {
         string playerName = ui.GetPlayerName();
         player.Name = playerName;
 
-        while (true) 
+        while (true)
         {
             Thread.Sleep(700);
             Console.Clear();
 
-            ui.ShowMainMenu();
-            
+            ui.ShowMainMenu(player.Name);
+
             string userInput = ui.GetMenuSelection();
             int selectedMenuNumber;
 
-            if(!int.TryParse(userInput, out selectedMenuNumber) || selectedMenuNumber<1||selectedMenuNumber>3)
+            if (!int.TryParse(userInput, out selectedMenuNumber) || selectedMenuNumber < 1 || selectedMenuNumber > 3)
             {
                 ui.ShowWarning();
             }
-            else 
+            else
             {
                 switch (selectedMenuNumber)
                 {
                     case 1:
-
+                        ShowPlayerStateFlow();
                         break;
                     case 2:
                         break;
@@ -41,7 +45,20 @@ public class GameManager{
             }
 
         }
+    }
 
-    
+    public void ShowPlayerStateFlow()
+    {
+        while (true)
+        {
+            Thread.Sleep(700);
+            Console.Clear();
+
+            ui.ShowPlayerState(player);
+            string input = ui.GetMenuSelection();
+
+            if (input == "0") break;
+            else ui.ShowWarning();
+        }
     }
 }
