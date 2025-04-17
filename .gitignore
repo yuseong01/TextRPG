@@ -1,0 +1,8 @@
+# 캐시 파일
+*.cache
+*.log
+.idea/
+.vscode/
+node_modules/
+bin/
+obj/
