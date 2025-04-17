@@ -12,11 +12,13 @@ public class Player{
     public int Gold {get; set;}
 
     InventoryManager inventory;
+    UIManager ui;
     
-    public Player(InventoryManager inventory)
+    public Player(InventoryManager inventory, UIManager ui)
     {
         this.inventory = inventory; // 플레이어 아이템
-            
+        this.ui = ui;
+
         Job = "전사";
         Level = 1;
         AttackPower = 10;
@@ -25,5 +27,19 @@ public class Player{
         Gold = 1500;
     }
 
+    public void ShowPlayerStateFlow()
+    {
+        while (true)
+        {
+            Thread.Sleep(700);
+            Console.Clear();
+
+            ui.ShowPlayerState(this);
+            string input = ui.GetMenuSelection();
+
+            if (input == "0") break;
+            else ui.ShowWarning();
+        }
+    }
 
 }
