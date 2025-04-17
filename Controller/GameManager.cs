@@ -4,11 +4,12 @@ public class GameManager
 {
     UIManager ui = new UIManager();  //입출력 담당
     Shop shop = new Shop();
-    InventoryManager inventory = new InventoryManager();
+    InventoryManager inventory;
     Player player;
 
     public GameManager()
     {
+        inventory = new InventoryManager(ui);
         player = new Player(inventory, ui); //1. 위에서 player객체 생성하면 오류남 
     }
     public void Run()
@@ -38,6 +39,7 @@ public class GameManager
                         player.ShowPlayerStateFlow();
                         break;
                     case 2:
+                        inventory.ShowInventoryStateFlow();
                         break;
                     case 3:
                         break;
