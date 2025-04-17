@@ -5,9 +5,9 @@ class Item{
     public string Description { get; private set; }
     public int Price { get; private set; }
     public bool IsEquipped { get; set; }
-    public bool isPurchased { get; set; }
+    public bool IsPurchased { get; set; }
 
-    public Item(string name, string type, string stat, string description, int price, bool isEquipped, bool isPurchased)
+    public Item(string name, string type, string stat, string description, int price)
     {
         Name = name;
         Type = type;
