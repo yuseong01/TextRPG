@@ -1,4 +1,5 @@
 public class UIManager{
+    //메뉴관련
     public void ShowMainMenu()
     {
         Console.WriteLine("고슴도치 마을에 오신 여러분 환영합니다.");
@@ -14,5 +15,16 @@ public class UIManager{
     public void ShowWarning()
     {
         Console.WriteLine("잘못입력하셨습니다. 다시 입력하세요:)");
+    }
+    
+    //플레이어관련
+    public string GetPlayerName()
+    {
+        Console.Write("플레이어의 이름을 입력하세요:");
+        return Console.ReadLine();
+    }
+    public void ShowPlayerState(Player player)
+    {
+        //Console.WriteLine("%d",player.);
     }
 }

@@ -1,14 +1,22 @@
 public class GameManager{
     UIManager ui = new UIManager();  //입출력 담당
-    Player player = new Player();
     Shop shop = new Shop();
     InventoryManager inventory = new InventoryManager();
-    
+    Player player;
+
+    public GameManager()
+    {
+        player = new Player("마법사", inventory); //1. 위에서 player객체 생성하면 오류남 
+    }
     public void Run() {
+        string playerName = ui.GetPlayerName();
+        player.Name = playerName;
+
         while (true) 
         {
             Thread.Sleep(700);
             Console.Clear();
+
             ui.ShowMainMenu();
             
             string userInput = ui.GetMenuSelection();
