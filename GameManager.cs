@@ -9,7 +9,7 @@ public class GameManager
 
     public GameManager()
     {
-        player = new Player(inventory); //1. 위에서 player객체 생성하면 오류남 
+        player = new Player(inventory, ui); //1. 위에서 player객체 생성하면 오류남 
     }
     public void Run()
     {
@@ -35,7 +35,7 @@ public class GameManager
                 switch (selectedMenuNumber)
                 {
                     case 1:
-                        ShowPlayerStateFlow();
+                        player.ShowPlayerStateFlow();
                         break;
                     case 2:
                         break;
@@ -44,21 +44,6 @@ public class GameManager
                 }
             }
 
-        }
-    }
-
-    public void ShowPlayerStateFlow()
-    {
-        while (true)
-        {
-            Thread.Sleep(700);
-            Console.Clear();
-
-            ui.ShowPlayerState(player);
-            string input = ui.GetMenuSelection();
-
-            if (input == "0") break;
-            else ui.ShowWarning();
         }
     }
 }
