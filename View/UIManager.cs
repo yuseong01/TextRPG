@@ -1,3 +1,6 @@
+using System.Reflection.Metadata;
+using Microsoft.VisualBasic;
+
 public class UIManager
 {
     //메뉴관련
@@ -28,8 +31,8 @@ public class UIManager
     {
         Console.WriteLine($"Lv.{player.Level} [ {player.Name} ]");
         Console.WriteLine($"\nChad : {player.Job}");
-        Console.WriteLine($"공격력 : {player.BaseAttackPower+player.AttackPower} (+{player.AttackPower})");
-        Console.WriteLine($"방어력 : {player.Defense+player.Defense} (+{player.Defense})");
+        Console.WriteLine($"공격력 : {player.BaseAttackPower + player.AttackPower} (+{player.AttackPower})");
+        Console.WriteLine($"방어력 : {player.Defense + player.Defense} (+{player.Defense})");
         Console.WriteLine($"체력 : {player.Hp}");
         Console.WriteLine($"Gold : {player.Gold}");
 
@@ -53,17 +56,86 @@ public class UIManager
 
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i].IsEquipped)
+            if (items[i].IsPurchased)
             {
-                Console.WriteLine($"- {i + 1} [E]{items[i].Name} | {items[i].Type} | {items[i].Description}");
-                
-            }
-            else
-            {
-                Console.WriteLine($"- {i + 1} {items[i].Name} | {items[i].Type} | {items[i].Description}");
+                if (items[i].IsEquipped)
+                {
+                    Console.WriteLine($"- {i + 1} [E]{items[i].Name} | {items[i].Type} | {items[i].Description}");
+
+                }
+                else
+                {
+                    Console.WriteLine($"- {i + 1} {items[i].Name} | {items[i].Type} | {items[i].Description}");
+                }
             }
         }
 
         Console.WriteLine("\n0. 나가기");
+    }
+
+    //상점
+    public void ShowShopMenu(Player player, List<Item> items)
+    {
+        Console.WriteLine("상점");
+        Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.\n");
+        Console.WriteLine("[보유 골드]");
+        Console.WriteLine($"{player.Gold} G\n");
+        Console.WriteLine("[아이템 목록]");
+
+        foreach (Item item in items)
+        {
+            if (item.IsPurchased)
+            {
+                Console.WriteLine($"- {item.Name} | {item.Type} +{item.Stat} | {item.Description} | 구매완료");
+
+            }
+            else
+            {
+                Console.WriteLine($"- {item.Name} | {item.Type} +{item.Stat} | {item.Description} | {item.Price} G");
+            }
+        }
+
+        Console.WriteLine("\n1. 아이템 구매");
+        Console.WriteLine("0. 나가기");
+    }
+    public void ShowBuyItemMenu(Player player, List<Item> items)
+    {
+        Console.WriteLine("상점 - 아이템구매");
+        Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.\n");
+        Console.WriteLine("[보유 골드]");
+        Console.WriteLine($"{player.Gold} G\n");
+        Console.WriteLine("[아이템 목록]");
+
+        foreach (Item item in items)
+        {
+            if (item.IsPurchased)
+            {
+                Console.WriteLine($"- {item.Name} | {item.Type} +{item.Stat} | {item.Description} | 구매완료");
+
+            }
+            else
+            {
+                Console.WriteLine($"- {item.Name} | {item.Type} +{item.Stat} | {item.Description} | {item.Price} G");
+            }
+        }
+
+        Console.WriteLine("\n1. 아이템 구매");
+        Console.WriteLine("0. 나가기");
+    }
+
+    public void ShowCurrentItemBuyState(int state)
+    {
+        switch (state)
+        {
+            case BuyItemResult.AlreadyBuy:
+                Console.WriteLine("이미 구매한 아이템입니다.");
+                break;
+            case BuyItemResult.SuccessBuy:
+                Console.WriteLine("구매를 완료했습니다.");
+                break;
+            case BuyItemResult.NotEnoughGold:
+                Console.WriteLine("Gold가 부족합니다");
+                break;
+        }
     }
 }
