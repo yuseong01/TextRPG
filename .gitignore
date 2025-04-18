@@ -6,6 +6,3 @@
 node_modules/
 bin/
 obj/
-.
-obj/Debug/net9.0/TextRPG.AssemblyInfo.cs
-obj/Debug/net9.0/TextRPG.AssemblyInfoInputs.cache
