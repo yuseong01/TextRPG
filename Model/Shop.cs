@@ -51,9 +51,9 @@ public class Shop{
 
             if(int.TryParse(input, out int index))
             {
-                if(index>=1&&index<=inventory.ItemLists.Count+1)
+                if(index>=1&&index<=inventory.ItemLists.Count)
                 {
-                    
+                    BuyItem(player, inventory.ItemLists[index-1]);
                 }
                 else
                 {
@@ -71,17 +71,17 @@ public class Shop{
     {
         if(item.IsPurchased)
         {
-            ui.ShowCurrentItemBuyState(0);
+            ui.ShowCurrentItemBuyState(BuyItemResult.AlreadyBuy);
         }
-        
-        if(player.Gold >= item.Price)
+        else if(player.Gold >= item.Price)
         {
-            ui.ShowCurrentItemBuyState(1);
+            ui.ShowCurrentItemBuyState(BuyItemResult.SuccessBuy);
             item.IsPurchased = true;
+            player.Gold -= item.Price;
         }
         else
         {
-            ui.ShowCurrentItemBuyState(2);
+            ui.ShowCurrentItemBuyState(BuyItemResult.NotEnoughGold);
         }
     }
 }

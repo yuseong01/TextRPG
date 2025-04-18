@@ -106,24 +106,22 @@ public class UIManager
         Console.WriteLine($"{player.Gold} G\n");
         Console.WriteLine("[아이템 목록]");
 
-        foreach (Item item in items)
+        for(int i=0; i<items.Count; i++)
         {
-            if (item.IsPurchased)
+            if (items[i].IsPurchased)
             {
-                Console.WriteLine($"- {item.Name} | {item.Type} +{item.Stat} | {item.Description} | 구매완료");
-
+                Console.WriteLine($"- {i + 1} {items[i].Name} | {items[i].Type} +{items[i].Stat} | {items[i].Description} | 구매완료");
             }
             else
             {
-                Console.WriteLine($"- {item.Name} | {item.Type} +{item.Stat} | {item.Description} | {item.Price} G");
+                Console.WriteLine($"- {i + 1} {items[i].Name} | {items[i].Type} +{items[i].Stat} | {items[i].Description} | {items[i].Price} G");
             }
         }
 
-        Console.WriteLine("\n1. 아이템 구매");
-        Console.WriteLine("0. 나가기");
+        Console.WriteLine("\n0. 나가기");
     }
 
-    public void ShowCurrentItemBuyState(int state)
+    public void ShowCurrentItemBuyState(BuyItemResult state)
     {
         switch (state)
         {
