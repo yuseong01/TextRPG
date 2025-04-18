@@ -2,16 +2,16 @@ using Microsoft.VisualBasic.FileIO;
 
 public class GameManager
 {
-    UIManager ui = new UIManager();  //입출력 담당
-    Shop shop;
-    InventoryManager inventory;
-    Player player;
+    public UIManager ui = new UIManager();  //입출력 담당
+    public ShopManager shop;
+    public InventoryManager inventory;
+    public Player player;
 
     public GameManager()
     {
         inventory = new InventoryManager(ui);
         player = new Player(ui, inventory); //1. 위에서 player객체 생성하면 오류남 
-        shop = new Shop(ui, player, inventory);
+        shop = new ShopManager(ui, player, inventory);
     }
     public void Run()
     {
