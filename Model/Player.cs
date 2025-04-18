@@ -14,8 +14,8 @@ public class Player{
     public int Hp {get; set;}
     public int Gold {get; set;}
 
-    UIManager ui;
-    InventoryManager inventory;
+    public UIManager ui;
+    public InventoryManager inventory;
     
     public Player(UIManager ui, InventoryManager inventory)
     {
