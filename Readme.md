@@ -14,7 +14,7 @@ C# 언어와 .NET을 활용하여 `MVC 패턴` 기반으로 설계하였으며, 
 
 ---
 
-## ⚠️⚠️ To be updated(업데이트 예정)
+## ⚠️ To be updated(업데이트 예정)
 
 - GitHub 오류로 인해 복구된 `Shop` 클래스 삭제 예정 (`ShopManager`가 동일 기능 담당)
 - `UpdatePlayerStates`에서 `AttackPower`와 `Defense` 초기화를 `BaseAttackPower`, `BaseDefense`로 수정 예정
