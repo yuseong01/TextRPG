@@ -24,14 +24,17 @@ public class Player{
 
         Job = "전사";
         Level = 1;
-        AttackPower = 10;
-        Defense = 5;
+        BaseAttackPower = 10;
+        BaseDefense = 5;
+        AttackPower =0;
+        Defense = 0;
         Hp = 100;
         Gold = 1500;
     }
 
     public void ShowPlayerStateFlow()
     {
+        UpdatePlayerStates();
         while (true)
         {
             Thread.Sleep(700);
@@ -47,7 +50,10 @@ public class Player{
 
     public void UpdatePlayerStates()
     {
-        foreach(var item in inventory.items.ItemLists)
+        AttackPower = 0;
+        Defense = 0;
+
+        foreach(var item in inventory.ItemLists)
         {
             if(item.IsEquipped)
             {
