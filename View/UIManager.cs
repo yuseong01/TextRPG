@@ -8,7 +8,7 @@ public class UIManager
     {
         Console.WriteLine($"고슴도치 마을에 오신 [ {name} ]님 환영합니다.");
         Console.WriteLine("이곳에서 던전으로 들어가기전 활동을 할 수 있습니다.\n");
-        Console.WriteLine("1. 상태 보기\n2. 인벤토리\n3. 상점");
+        Console.WriteLine("1. 상태 보기\n2. 인벤토리\n3. 상점\n4. 던전입장\n5. 휴식하기");
     }
     public string GetMenuSelection()
     {
@@ -32,11 +32,19 @@ public class UIManager
         Console.WriteLine($"Lv.{player.Level} [ {player.Name} ]");
         Console.WriteLine($"\nChad : {player.Job}");
         Console.WriteLine($"공격력 : {player.BaseAttackPower + player.AttackPower} (+{player.AttackPower})");
-        Console.WriteLine($"방어력 : {player.Defense + player.Defense} (+{player.Defense})");
+        Console.WriteLine($"방어력 : {player.BaseDefense + player.Defense} (+{player.Defense})");
         Console.WriteLine($"체력 : {player.Hp}");
         Console.WriteLine($"Gold : {player.Gold}");
 
         Console.WriteLine("\n0. 나가기");
+    }
+    public void ShowPlayerHPRecoveryMenu(Player player)
+    {
+        Console.WriteLine("휴식하기");
+        Console.WriteLine($"500 G 를 내면 체력을 회복할 수 있습니다. (보유골드 : {player.Gold})\n");
+        Console.WriteLine("1. 휴식하기");
+        Console.WriteLine("0. 나가기");
+
     }
 
     //인벤토리

@@ -28,7 +28,7 @@ public class GameManager
             string userInput = ui.GetMenuSelection();
             int selectedMenuNumber;
 
-            if (!int.TryParse(userInput, out selectedMenuNumber) || selectedMenuNumber < 1 || selectedMenuNumber > 3)
+            if (!int.TryParse(userInput, out selectedMenuNumber) || selectedMenuNumber < 1 || selectedMenuNumber > 5)
             {
                 ui.ShowWarning();
             }
@@ -44,6 +44,11 @@ public class GameManager
                         break;
                     case 3:
                         shop.ShowShopStateFlow();
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        player.UpdatePlayerHP();
                         break;
                 }
             }
