@@ -10,7 +10,7 @@ public class GameManager
     public GameManager()
     {
         inventory = new InventoryManager(ui);
-        player = new Player(inventory, ui); //1. 위에서 player객체 생성하면 오류남 
+        player = new Player(ui, inventory); //1. 위에서 player객체 생성하면 오류남 
     }
     public void Run()
     {

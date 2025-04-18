@@ -45,21 +45,22 @@ public class UIManager
         Console.WriteLine("0. 나가기");
     }
 
-    public void ShowPlayerEquipItem(List<Item> items)
+    public void ShowPlayerEquipItem(ItemList items)
     {
         Console.WriteLine("인벤토리 - 장착 관리");
         Console.WriteLine("보유 중인 아이템을 관리할 수 있습니다.\n");
         Console.WriteLine("[아이템 목록]");
 
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < items.ItemLists.Count; i++)
         {
-            if (items[i].IsEquipped)
+            if (items.ItemLists[i].IsEquipped)
             {
-                Console.WriteLine($"- {i + 1} [E]{items[i].Name} | {items[i].Type} | {items[i].Description}");
+                Console.WriteLine($"- {i + 1} [E]{items.ItemLists[i].Name} | {items.ItemLists[i].Type} | {items.ItemLists[i].Description}");
+                
             }
             else
             {
-                Console.WriteLine($"- {i + 1} {items[i].Name} | {items[i].Type} | {items[i].Description}");
+                Console.WriteLine($"- {i + 1} {items.ItemLists[i].Name} | {items.ItemLists[i].Type} | {items.ItemLists[i].Description}");
             }
         }
 

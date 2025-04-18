@@ -6,18 +6,21 @@ public class Player{
     public string Name {get; set;}
     public string Job {get; set;}
 
+    public int BaseAttackPower {get; set;}
+    public int BaseDefense {get; set;}
     public int AttackPower {get; set;}
     public int Defense {get; set;}
+
     public int Hp {get; set;}
     public int Gold {get; set;}
 
-    InventoryManager inventory;
     UIManager ui;
+    InventoryManager inventory;
     
-    public Player(InventoryManager inventory, UIManager ui)
+    public Player(UIManager ui, InventoryManager inventory)
     {
-        this.inventory = inventory; // 플레이어 아이템
         this.ui = ui;
+        this.inventory = inventory;
 
         Job = "전사";
         Level = 1;
@@ -42,6 +45,21 @@ public class Player{
         }
     }
 
-    
-
+    public void UpdatePlayerStates()
+    {
+        foreach(var item in inventory.items.ItemLists)
+        {
+            if(item.IsEquipped)
+            {
+                if(item.Type == "공격력")
+                {
+                    AttackPower+=item.Stat;
+                }
+                else if(item.Type == "방어력")
+                {
+                    Defense += item.Stat;
+                }
+            }
+        }
+    }
 }
